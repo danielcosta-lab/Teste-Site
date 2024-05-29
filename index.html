@@ -19,12 +19,32 @@
         height: 100%;
         object-fit: cover;
     }
+    #unmute-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
 </style>
 </head>
 <body>
-    <video width="300px" height="300px" autoplay muted>
+    <video id="video" autoplay muted playsinline>
         <source src="video/teste.mp4" type="video/mp4">
         Seu navegador não suporta vídeos HTML5.
     </video>
+    <button id="unmute-button" onclick="unmuteVideo()">Ativar Som</button>
+    <script>
+        function unmuteVideo() {
+            var video = document.getElementById('video');
+            video.muted = false;
+            video.play(); // Reiniciar a reprodução para alguns navegadores
+            document.getElementById('unmute-button').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
